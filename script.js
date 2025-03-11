@@ -6,6 +6,7 @@ function createGrid(size=16) {
         const div = document.createElement("div")
         div.classList.add("grid_item")
         div.style.cssText = `width: calc(100% / ${size});`
+        linkGridItemHover(div)
         container.appendChild(div)
     }
 
@@ -44,6 +45,18 @@ function resetGrid() {
     const container = document.querySelector(".container")
 
     container.innerHTML = ""
+}
+
+function linkGridItemHover(grid_item) {
+    grid_item.addEventListener("mouseenter", () => grid_item.style.background = getRandomColor())
+}
+
+function getRandomColor() {
+    return `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`
+}
+
+function getRandomNumber(max) {
+    return Math.floor(Math.random() * max)
 }
 
 linkGridButton()
