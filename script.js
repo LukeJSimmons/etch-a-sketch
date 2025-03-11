@@ -1,6 +1,4 @@
 function createGrid(size=16) {
-    // Ensures user can't make an empty canvas or overload the system with 1000 elements
-    if (!isValidSize(size)) return alert("Invalid size! Must be between 1-100")
 
     const container = document.querySelector(".container")
 
@@ -21,7 +19,8 @@ function isValidSize(size) {
 function displaySize(size) {
     const body = document.querySelector("body")
 
-    const sizeText = document.createElement("h2")
+    const sizeText = document.querySelector("#sizeText") || document.createElement("h2")
+    sizeText.id = "sizeText"
     sizeText.innerText = `${size}x${size}`
     body.appendChild(sizeText)
 }
@@ -32,9 +31,21 @@ function linkGridButton() {
 }
 
 function pressGridButton() {
-    console.log("press")
+    const newSize = prompt("What size grid would you like? 8, 16, 32?")
+
+    // Ensures user can't make an empty canvas or overload the system with 1000 elements
+    if (!isValidSize(newSize)) return alert("Invalid size! Must be between 1-100")
+
+    resetGrid()
+    createGrid(newSize)
+}
+
+function resetGrid() {
+    const container = document.querySelector(".container")
+
+    container.innerHTML = ""
 }
 
 linkGridButton()
 
-createGrid(16)
+createGrid(8)
