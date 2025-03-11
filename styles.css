@@ -1,0 +1,16 @@
+.container {
+    width: 512px;
+    height: 512px;
+    background-color: black;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid_item {
+    background-color: white;
+}
+
+.grid_item:hover {
+    background-color: black;
+}
